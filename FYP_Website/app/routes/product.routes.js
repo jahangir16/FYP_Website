@@ -7,7 +7,7 @@ module.exports = app => {
     // Retrieve all Products
     router.get("/products", products.getAllProducts);
 
-    router.get("/products/:id", products.getProductWithReviews);
+    router.get("/product/:id", products.getProductWithReviews);
 
     // Use the router
     app.use('/', router);
