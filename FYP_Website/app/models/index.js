@@ -18,7 +18,17 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 //connecting to model
-db.users = require('./user.model.js')(sequelize, Sequelize.DataTypes);
+db.user = require("../models/user.model.js")(sequelize, Sequelize);
+db.role = require("../models/role.model.js")(sequelize, Sequelize);
+
+db.role.belongsToMany(db.user, {
+  through: "user_roles"
+});
+db.user.belongsToMany(db.role, {
+  through: "user_roles"
+});
+
+db.ROLES = ["user", "admin", "moderator"];
 
 
 db.products = require("./product.model.js")(sequelize, Sequelize);

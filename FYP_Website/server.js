@@ -5,10 +5,32 @@ const cors = require("cors");
 const dotenv = require('dotenv').config()
 const cookieParser = require('cookie-parser')
 const db = require("./app/models");
-const userRoutes = require ('./app/routes/user.routes.js')
+const Role = require('./app/models/role.model')(db.sequelize, sequelize.Sequelize);
+
+
 
 const app = express();
+/**
+function initial() {
+  Role.create({
+    id: 1,
+    name: "user"
+  });
+ 
+  Role.create({
+    id: 2,
+    name: "moderator"
+  });
+ 
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+}
 
+// Call the initial function when the server starts, not as a middleware
+initial();
+ */
 //middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -34,6 +56,9 @@ db.sequelize.sync().then(() => {
   console.log("db has been re sync")
 })
 
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
 // simple route
 app.get("/", (req, res) => {
