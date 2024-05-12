@@ -17,6 +17,10 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+//connecting to model
+db.users = require('./user.model.js')(sequelize, Sequelize.DataTypes);
+
+
 db.products = require("./product.model.js")(sequelize, Sequelize);
 db.reviews = require("./review.model.js")(sequelize, Sequelize);
 
