@@ -129,6 +129,39 @@ exports.getAllProducts = (req, res) => {
     });
 };
 
+exports.getAllProductsByCategory = (req, res) => {
+    const category = req.params.c; // Get the category from the request parameters
+
+    // Query the database to get all products in the specified category
+    Product.findAll({
+        where: { category: category }
+    })
+    .then((products) => {
+        const processedProducts = processProducts(products);
+        res.send(processedProducts);
+    })
+    .catch((err) => {
+        res.status(500).send({ message: err.message || "Error retrieving products" });
+    });
+}
+
+
+// Function to process products
+function processProducts(products) {
+    return products.map(product => {
+        const data = product.dataValues;
+        const processedProduct = {
+            ...data,
+            productname: data.productname.replace(/[{}"]/g, ''),
+            brandname: data.brandname.replace(/[{}"]/g, ''),
+            discountprice: data.discountprice.replace(/[{}"]/g, ''),
+            originalprice: data.originalprice.replace(/[{}"]/g, ''),
+            rating: data.rating.replace(/[{}"]/g, ''),
+            image_urls: data.image_urls.replace(/[{}"]/g, '')
+        };
+        return processedProduct;
+    });
+}
 /**
 // Get all products
 // Get all products with pagination
