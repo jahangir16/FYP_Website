@@ -1,23 +1,18 @@
-
-//import ProductDetail from '../../Frontend_Fyp/src/ProductDetail';
-//import ProductCard from '../src/components/ProductCard';
 import './App.css'
 import ProductCard from './components/ProductCard';
-//import ProductCard from './components/ProductCard';
+import ProductDetails from './components/ProductDetails';
+import { Route, BrowserRouter, Routes } from 'react-router-dom'
 
 function App() {
   return (
-  
-    
-    //<ProductDetail productId={19} />
-    //<h1>Hello</h1>
-    <ProductCard />
-    
-
-    
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ProductCard />} />
+        <Route path="/product/:productId" element={<ProductDetails />} />
+        {/* Other routes */}
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-
 
 export default App

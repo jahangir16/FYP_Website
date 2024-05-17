@@ -33,7 +33,7 @@ return (
                     <div className="mx-auto max-w-4xl">
                         {product && (
                             <>
-                                <p className="text-2xl font-bold mb-4">{product.productname}</p>
+                                
                                 <div className="lg:flex-row flex flex-row">
                                     <img src={product.image_urls} alt={product.productname} className="w-full lg:w-1/3 lg:mb-0 lg:mr-6 rounded-md shadow-md mb-4" />
                                     <div className="flex-1">
@@ -57,13 +57,17 @@ return (
                 <div className="bg-white text-gray-800 sm:p-6 lg:p-8 p-4">
                     <div className="mx-auto max-w-4xl">
                         <p className="text-2xl font-bold mb-4">Product Reviews</p>
-                        <ul className="space-y-4">
-                            {reviews.map(review => (
-                                <li key={review.id} className="rounded-md shadow-sm border border-gray-300 p-4">
-                                    <p className="text-gray-700">{review.review_content}</p>
-                                </li>
-                            ))}
-                        </ul>
+                        {reviews.length === 0 ? (
+                            <p>No Reviews</p>
+                        ) : (
+                            <ul className="space-y-4">
+                                {reviews.map(review => (
+                                    <li key={review.id} className="rounded-md shadow-sm border border-gray-300 p-4">
+                                        <p className="text-gray-700">{review.review_content}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import App from './App.jsx';
 import './index.css';
 //import {createBrowserRouter,RouterProvider,} from 'react-router-dom';  
-import { BrowserRouter } from 'react-router-dom'
+//import { BrowserRouter } from 'react-router-dom'
 /*
 import ErrorPage from './error-page';
 import ProductDetails from './components/ProductDetails.jsx';
@@ -32,7 +32,7 @@ import { loader as rootLoader } from './routes/root.jsx';
 //]);
 */
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  
     <App/>
-  </BrowserRouter>
+ 
 );
