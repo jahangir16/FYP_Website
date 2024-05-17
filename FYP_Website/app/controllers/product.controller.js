@@ -92,10 +92,12 @@ exports.getProductWithReviews = (req, res) => {
             res.status(500).send({ message: err.message || "Error retrieving product" });
         });
 };
+
+//you would make a GET request to /products?page=2&limit=20.
 //, you can search for products by making a GET request to /products?search=samsung
 exports.getAllProducts = (req, res) => {
     const page = req.query.page ? req.query.page : 1; // Default to page 1
-    const limit = req.query.limit ? req.query.limit : 10; // Default limit to 10 items
+    const limit = req.query.limit ? req.query.limit : 12; // Default limit to 12 items
     const offset = (page - 1) * limit;
     const search = req.query.search; // Get the search term from the query parameters
 

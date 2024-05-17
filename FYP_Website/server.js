@@ -37,7 +37,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: ["http://localhost:8081", 
+          "http://localhost:5173"]
 };
 
 app.use(cors(corsOptions));

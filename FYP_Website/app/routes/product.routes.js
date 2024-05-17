@@ -21,7 +21,7 @@ module.exports = app => {
     //router.get("/product/:id", products.getProductWithReviews);
     const { authJwt } = require("../middleware"); // adjust the path as needed
 
-    router.get("/product/:id", [authJwt.verifyToken, authJwt.isModerator], products.getProductWithReviews);
+    router.get("/product/:id", products.getProductWithReviews);
     
     router.get("/products/category/:c", products.getAllProductsByCategory);
     // Use the router
